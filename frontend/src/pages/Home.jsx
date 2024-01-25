@@ -17,6 +17,7 @@ import About from "../components/About/About";
 import ServicesList from "../components/Services/ServicesList";
 import DoctorList from "../components/Doctors/DoctorList";
 import FaqList from "../components/Faq/FaqList";
+import Testimonial from "../components/Testimonial/Testimonial";
 
 const Home = () => {
   return (
@@ -296,6 +297,7 @@ const Home = () => {
               adipisicing elitnobis.
             </p>
           </div>
+          <Testimonial />
         </div>
       </section>
     </>
