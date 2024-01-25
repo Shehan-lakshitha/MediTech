@@ -9,12 +9,14 @@ import icon03 from "../assets/images/icon03.png";
 import featureImg from "../assets/images/feature-img.png";
 import videoIcon from "../assets/images/video-icon.png";
 import avatarIcon from "../assets/images/avatar-icon.png";
+import faqImg from "../assets/images/faq-img.png"
 
 import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 import About from "../components/About/About";
 import ServicesList from "../components/Services/ServicesList";
 import DoctorList from "../components/Doctors/DoctorList";
+import FaqList from "../components/Faq/FaqList";
 
 const Home = () => {
   return (
@@ -252,7 +254,7 @@ const Home = () => {
       {/* Doctors section */}
       <section>
         <div className="container">
-        <div className="xl:w-[470px] mx-auto">
+          <div className="xl:w-[470px] mx-auto">
             <h2 className="heading text-center">Our Doctors</h2>
             <p className="text_para text-center">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto,
@@ -261,6 +263,39 @@ const Home = () => {
           </div>
 
           <DoctorList />
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section>
+        <div className="container">
+          <div className="flex justify-between gap-[50px] lg:gap-0">
+            <div className="w-1/2 hidden md:block">
+              <img src={faqImg} alt="" />
+            </div>
+
+            <div className="w-full md:w-1/2">
+              <h2 className="heading">
+                Most questions by our beloved patients
+              </h2>
+
+              <FaqList />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonial */}
+
+      <section>
+        <div className="container">
+        <div className="xl:w-[470px] mx-auto">
+            <h2 className="heading text-center">What our patients say</h2>
+            <p className="text_para text-center">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto,
+              adipisicing elitnobis.
+            </p>
+          </div>
         </div>
       </section>
     </>
