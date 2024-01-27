@@ -52,7 +52,7 @@ const Login = () => {
           </div>
 
           <p className="mt-5 text-textColor text-center">
-            Don't have an account?
+            Don&apos; have an account?
             <Link to="/register" className="text-primaryColor font-medium ml-1">
               {" "}
               Register
