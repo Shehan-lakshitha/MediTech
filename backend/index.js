@@ -39,5 +39,5 @@ app.use('/api/v1/auth', authRoute);
 
 app.listen(port, ()=> {
     connectDB();
-    console.log("server is running" + port);
+    console.log("server is running @ http://localhost:" + port);
 })
