@@ -12,7 +12,7 @@ const generateToken = user=>{
 
 
 export const register = async(req, res)=>{
-    const {email, password, name, role, photo, gender} = req.body
+    const {email, password, name,role, photo, gender} = req.body
     try {
 
         let user = null;
@@ -91,6 +91,7 @@ export const login = async(req, res)=>{
         const token = generateToken(user);
 
         const {password, role, appointments, ...rest} = user._doc;
+
 
         res.status(200).json({status: true,message: "Successfully login", token, data:{...rest}, role});
 
