@@ -42,7 +42,7 @@ export const register = async(req, res)=>{
                 role
             })
         }
-        if(role ==='Doctor'){
+        if(role ==='doctor'){
             user = new Doctor({
                 name,
                 email,
