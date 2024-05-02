@@ -15,8 +15,10 @@ const Signup = () => {
   });
 
   const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target, value });
+    const { name, value } = e.target; 
+    setFormData({ ...formData, [name]: value });
   };
+  
 
   const handleFileInputChange = async (event) => {
     const file = event.target.files[0];
