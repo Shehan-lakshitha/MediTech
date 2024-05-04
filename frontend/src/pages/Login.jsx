@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../config";
 import { toast } from "react-toastify";
-import { authContext } from "../context/AuthContext.jsx";
+import { authContext } from "../context/AuthContext";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -41,7 +41,7 @@ const Login = () => {
       dispatch({
         type: "LOGIN_SUCCESS",
         payload: {
-          user: result.user,
+          user: result.data,
           role: result.role,
           token: result.token,
         },
