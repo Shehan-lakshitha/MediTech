@@ -1,10 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 
 import logo from "../../assets/images/logo.png";
 import userImg from "../../assets/images/avatar-icon.png";
 import { BiMenu } from "react-icons/bi";
 
 import { NavLink, Link } from "react-router-dom";
+import { authContext } from "../../context/AuthContext";
 
 const navLinks = [
   {
@@ -26,28 +27,30 @@ const navLinks = [
 ];
 
 const Header = () => {
-
   const headerRef = useRef(null);
   const menuRef = useRef(null);
+  const { user, role, token } = useContext(authContext);
 
   const handleStickyHeader = () => {
-    window.addEventListener('scroll', () => {
-      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80){
-        headerRef.current.classList.add('sticky_header');
-      }else {
-        headerRef.current.classList.remove('sticky_header');
+    window.addEventListener("scroll", () => {
+      if (
+        document.body.scrollTop > 80 ||
+        document.documentElement.scrollTop > 80
+      ) {
+        headerRef.current.classList.add("sticky_header");
+      } else {
+        headerRef.current.classList.remove("sticky_header");
       }
-    })
-  }
+    });
+  };
 
   useEffect(() => {
-    handleStickyHeader()
+    handleStickyHeader();
 
-    return ()=> window.removeEventListener('scroll', handleStickyHeader)
-  })
+    return () => window.removeEventListener("scroll", handleStickyHeader);
+  });
 
-  const toggleMenu = () => menuRef.current.classList.toggle('show_menu');
-
+  const toggleMenu = () => menuRef.current.classList.toggle("show_menu");
 
   return (
     <header className="header flex items-center" ref={headerRef}>
@@ -87,7 +90,7 @@ const Header = () => {
                 </figure>
               </Link>
             </div>
-
+            <h1>{user?.name}</h1>
             <Link to="/login">
               <button className="bg-primaryColor py-2 px-6 text-white font-[600] h-[44px] flex items-center justify-center rounded-[10px]">
                 Login
