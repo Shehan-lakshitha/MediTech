@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useContext } from "react";
 import logo from "../../assets/images/logo.png";
 import { BiMenu } from "react-icons/bi";
+import userImg from "../../assets/images/doctor-img01.png";
 import { NavLink, Link } from "react-router-dom";
 import { authContext } from "../../context/AuthContext";
 
@@ -92,7 +93,7 @@ const Header = () => {
                 >
                   <figure className="w-[45px] h-[45px] rounded-full cursor-pointer">
                     <img
-                      src={user?.photo}
+                      src={user?.photo || userImg}
                       className="w-full rounded-full"
                       alt=""
                     />
