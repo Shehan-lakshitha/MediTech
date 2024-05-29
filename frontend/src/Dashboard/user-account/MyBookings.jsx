@@ -7,12 +7,11 @@ import { BASE_URL } from "../../config";
 
 const MyBookings = () => {
   const {
-    data,
+    data:appointments,
     loading,
     error,
-  } = useFetchData(`${BASE_URL}/users/appointments/my-appointments}`);
+  } = useFetchData(`${BASE_URL}/users/appointments/my-appointments`);
 
-  console.log(data);
 
   return (
     <div>
@@ -22,7 +21,7 @@ const MyBookings = () => {
 
       {!loading && !error && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-          {data.map((doctor) => {
+          {appointments.map((doctor) => {
             <DoctorCard doctor={doctor} key={doctor._id} />;
           })}
         </div>

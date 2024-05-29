@@ -1,13 +1,14 @@
 import { useEffect, useState, useContext } from "react";
 import { authContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
+import { token } from "../config";
 
 const useFetchData = (url) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const { token } = useContext(authContext);
+  // const { token } = useContext(authContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +21,7 @@ const useFetchData = (url) => {
         const result = await res.json();
 
         if (!res.ok) {
-          return toast.error(result.message);
+          throw new Error(result.message);
         }
 
         setData(result.data);
