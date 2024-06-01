@@ -24,7 +24,7 @@ router.delete("/:id", authenticate, restrict(["doctor"]), deleteDoctor);
 router.get(
   "/profile/me",
   authenticate,
-  restrict(["doctor","patient"]),
+  restrict(["doctor"]),
   getDoctorProlfile
 );
 

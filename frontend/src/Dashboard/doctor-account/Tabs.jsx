@@ -1,17 +1,16 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import { BiMenu } from "react-icons/bi";
 import { authContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Tabs = ({ tab, setTab }) => {
-
   const { dispatch } = useContext(authContext);
   const navigate = useNavigate();
 
-  const handleLogout = ()=> {
-    dispatch({type: 'LOGOUT'})
-    navigate('/')
-  }
+  const handleLogout = () => {
+    dispatch({ type: "LOGOUT" });
+    navigate("/");
+  };
 
   return (
     <div>
@@ -20,7 +19,7 @@ const Tabs = ({ tab, setTab }) => {
       </span>
       <div className="hidden lg:flex flex-col p-[30px] bg-white shadow-panelShadow items-center h-max rounded-md">
         <button
-        onClick={() => setTab("overview")}
+          onClick={() => setTab("overview")}
           className={`${
             tab === "overview"
               ? "bg-indigo-100 text-primaryColor"
@@ -30,7 +29,7 @@ const Tabs = ({ tab, setTab }) => {
           Overview
         </button>
         <button
-        onClick={() => setTab("appointments")}
+          onClick={() => setTab("appointments")}
           className={`${
             tab === "appointments"
               ? "bg-indigo-100 text-primaryColor"
@@ -40,7 +39,7 @@ const Tabs = ({ tab, setTab }) => {
           Appointments
         </button>
         <button
-        onClick={() => setTab("settings")}
+          onClick={() => setTab("settings")}
           className={`${
             tab === "settings"
               ? "bg-indigo-100 text-primaryColor"
@@ -51,16 +50,16 @@ const Tabs = ({ tab, setTab }) => {
         </button>
 
         <div className="mt-[100px] w-full">
-                <button
-                  onClick={handleLogout}
-                  className="w-full bg-primaryColor p-3 text-[16px] leading-7 rounded-md text-white"
-                >
-                  Logout
-                </button>
-                <button className="w-full bg-red-600 mt-4 p-3 text-[16px] leading-7 rounded-md text-white">
-                  Delete Account
-                </button>
-              </div>
+          <button
+            onClick={handleLogout}
+            className="w-full bg-primaryColor p-3 text-[16px] leading-7 rounded-md text-white"
+          >
+            Logout
+          </button>
+          <button className="w-full bg-red-600 mt-4 p-3 text-[16px] leading-7 rounded-md text-white">
+            Delete Account
+          </button>
+        </div>
       </div>
     </div>
   );
