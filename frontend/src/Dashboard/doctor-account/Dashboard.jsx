@@ -70,27 +70,32 @@ const Dashboard = () => {
                         {data.specialization || "surgeon"}
                       </span>
 
-                      <h3 className="text-[22px] leading-9 font-bold text-headingColor mt-3">Shehan Lakshitha</h3>
+                      <h3 className="text-[22px] leading-9 font-bold text-headingColor mt-3">
+                        {data.name || "Shehan Lakshitha"}
+                      </h3>
 
                       <div className="flex items-center gap-[6px]">
                         <span className="flex items-center gap-[6px] text-headingColor text-[14px] leading-5 lg:text-[16px] lg:leading-6 font-semibold">
-                          <img src={starIcon} alt="" />4.5
+                          <img src={starIcon} alt="" />
+                          {data.averageRating || 4.5}
                         </span>
                         <span className=" text-textColor text-[14px] leading-5 lg:text-[16px] lg:leading-6 font-semibold">
-                          (123)
+                          ({data.totalRating || 123})
                         </span>
                       </div>
 
-                      <p className="text_para font-[15px] lg:max-[190px] leading-6">doctor bio</p>
+                      <p className="text_para font-[15px] lg:max-[190px] leading-6">
+                        {data?.bio || 'lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+                      </p>
                     </div>
                   </div>
-                  <DoctorsAbout 
+                  <DoctorsAbout
                     name={data.name}
                     about={data.about}
                     qualifications={data.qualifications}
-                    experiences={data.experiences}/>
+                    experiences={data.experiences}
+                  />
                 </div>
-
               )}
               {tab === "appointments" && <div>Apointments</div>}
               {tab === "settings" && <Profile />}

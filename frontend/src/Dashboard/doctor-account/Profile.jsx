@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
+import uploadImageToCloudinary from "../../utils/uploadCloudinary.js";
+import { BASE_URL, token } from "../../config.js";
+import { toast } from "react-toastify";
 
-const Profile = () => {
+const Profile = ({ doctorData }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "ShehanLaksh@gmail.com",
+    password: "",
     phone: "",
     bio: "",
     gender: "",
     specialization: "",
     ticketPrice: 0,
     qualifications: [],
-    experiences: [
-      { startingDate: "", endingDate: "", position: "", hospital: "" },
-    ],
-    timeSlots: [{ day: "", startingTime: "", endingTime: "" }],
+    experiences: [],
+    timeSlots: [],
     about: "",
     photo: null,
   });
@@ -23,10 +25,36 @@ const Profile = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleFileInputChange = (e) => {};
+  const handleFileInputChange = async (event) => {
+    const file = event.target.files[0];
+    const data = await uploadImageToCloudinary(file);
+
+    setFormData({ ...formData, photo: data?.url });
+  };
 
   const updateProfileHandler = async (e) => {
     e.preventDefault();
+
+    try {
+      const res = await fetch(`${BASE_URL}/doctors/${doctorData._id}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        throw Error(result.message);
+      }
+
+      toast.success(result.message);
+    } catch (err) {
+      toast.error(err.message);
+    }
   };
 
   const addItem = (key, item) => {
@@ -76,6 +104,45 @@ const Profile = () => {
   const deleteQualification = (e, index) => {
     e.preventDefault();
     deleteItem("qualifications", index);
+  };
+
+  const addExperiences = (e) => {
+    e.preventDefault();
+
+    addItem("experiences", {
+      startingDate: "",
+      endingDate: "",
+      position: "Senior Surgeon",
+      hospital: "New Appollo Hospital",
+    });
+  };
+
+  const handleExperiencesChange = (event, index) => {
+    handleReusableChangeFunc("experiences", event, index);
+  };
+
+  const deleteExperiences = (e, index) => {
+    e.preventDefault();
+    deleteItem("experiences", index);
+  };
+
+  const addTimeSlots = (e) => {
+    e.preventDefault();
+
+    addItem("timeSlots", {
+      day: "Tuesday",
+      startingTime: "03:00",
+      endingTime: "06:00",
+    });
+  };
+
+  const handleTimeSlotsChange = (event, index) => {
+    handleReusableChangeFunc("timeSlots", event, index);
+  };
+
+  const deleteTimeSlots = (e, index) => {
+    e.preventDefault();
+    deleteItem("timeSlots", index);
   };
 
   return (
@@ -266,6 +333,7 @@ const Profile = () => {
                       name="startingDate"
                       value={item.startingDate}
                       className="form_input"
+                      onChange={(e) => handleExperiencesChange(e, index)}
                     />
                   </div>
                   <div>
@@ -275,6 +343,7 @@ const Profile = () => {
                       name="endingDate"
                       value={item.endingDate}
                       className="form_input"
+                      onChange={(e) => handleExperiencesChange(e, index)}
                     />
                   </div>
                 </div>
@@ -286,6 +355,7 @@ const Profile = () => {
                       name="position"
                       value={item.position}
                       className="form_input"
+                      onChange={(e) => handleExperiencesChange(e, index)}
                     />
                   </div>
                   <div>
@@ -295,18 +365,25 @@ const Profile = () => {
                       name="Hospital"
                       value={item.hospital}
                       className="form_input"
+                      onChange={(e) => handleExperiencesChange(e, index)}
                     />
                   </div>
                 </div>
 
-                <button className="bg-red-600 p-2 rounded-full text-white text-[18px] mt-2 mb-[30px] cursor-pointer">
+                <button
+                  onClick={(e) => deleteExperiences(e, index)}
+                  className="bg-red-600 p-2 rounded-full text-white text-[18px] mt-2 mb-[30px] cursor-pointer"
+                >
                   <AiOutlineDelete />
                 </button>
               </div>
             </div>
           ))}
 
-          <button className="bg-primaryColor py-2 px-5 rounded text-white h-fit cursor-pointer">
+          <button
+            onClick={addExperiences}
+            className="bg-primaryColor py-2 px-5 rounded text-white h-fit cursor-pointer"
+          >
             Add Experiences
           </button>
         </div>
@@ -326,6 +403,7 @@ const Profile = () => {
                       name="day"
                       value={item.day}
                       className="form_input py-3.5"
+                      onChange={(e) => handleExperiencesChange(e, index)}
                     >
                       <option value="">Select</option>
                       <option value="sunday">Sunday</option>
@@ -344,6 +422,7 @@ const Profile = () => {
                       name="startingTime"
                       value={item.startingTime}
                       className="form_input"
+                      onChange={(e) => handleExperiencesChange(e, index)}
                     />
                   </div>
                   <div>
@@ -353,10 +432,14 @@ const Profile = () => {
                       name="endingTime"
                       value={item.endingTime}
                       className="form_input"
+                      onChange={(e) => handleExperiencesChange(e, index)}
                     />
                   </div>
                   <div className="flex items-center">
-                    <button className="bg-red-600 p-2 rounded-full text-white text-[18px] mt-9 cursor-pointer">
+                    <button
+                      onClick={(e) => deleteTimeSlots(e, index)}
+                      className="bg-red-600 p-2 rounded-full text-white text-[18px] mt-9 cursor-pointer"
+                    >
                       <AiOutlineDelete />
                     </button>
                   </div>
@@ -365,8 +448,11 @@ const Profile = () => {
             </div>
           ))}
 
-          <button className="bg-primaryColor py-2 px-5 rounded text-white h-fit cursor-pointer">
-            Add TimeSlots
+          <button
+            onClick={addTimeSlots}
+            className="bg-primaryColor py-2 px-5 rounded text-white h-fit cursor-pointer"
+          >
+            Add a Timeslot
           </button>
         </div>
 
