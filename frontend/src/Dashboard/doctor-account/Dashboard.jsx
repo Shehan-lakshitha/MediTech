@@ -7,6 +7,7 @@ import doctorimg from "../../assets/images/doctor-img01.png";
 import Tabs from "./Tabs";
 import starIcon from "../../assets/images/Star.png";
 import DoctorsAbout from "../../pages/Doctors/DoctorsAbout";
+import Profile from "./Profile";
 
 const Dashboard = () => {
   const { data, loading, error } = useFetchData(
@@ -92,7 +93,7 @@ const Dashboard = () => {
 
               )}
               {tab === "appointments" && <div>Apointments</div>}
-              {tab === "settings" && <div>Profile settings</div>}
+              {tab === "settings" && <Profile />}
             </div>
           </div>
         </div>
