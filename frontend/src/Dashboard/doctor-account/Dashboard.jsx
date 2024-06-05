@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Loader from "../../components/Loader/Loader";
 import Error from "../../components/Error/Error";
-import useFetchData from "../../hooks/useFetchData";
 import { BASE_URL } from "../../config";
 import doctorimg from "../../assets/images/doctor-img01.png";
 import Tabs from "./Tabs";
@@ -11,6 +10,7 @@ import Profile from "./Profile";
 import { toast } from "react-toastify";
 import { token } from "../../config";
 import { authContext } from "../../context/AuthContext";
+import Appointments from "./Appointments";
 
 const Dashboard = () => {
   const { user } = useContext(authContext);
@@ -126,7 +126,7 @@ const Dashboard = () => {
                     />
                   </div>
                 )}
-                {tab === "appointments" && <div>Apointments</div>}
+                {tab === "appointments" && <Appointments appointments={data.appointments} />}
                 {tab === "settings" && <Profile doctorData={data} />}
               </div>
             </div>
