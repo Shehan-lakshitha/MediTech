@@ -243,9 +243,9 @@ const Profile = ({ doctorData }) => {
                 className="form_input py-3.5"
               >
                 <option value="">Select</option>
-                <option value="surgeon">Surgeon</option>
-                <option value="neurologist">Neurologist</option>
-                <option value="dermatologist">Dermatologist</option>
+                <option value="Surgeon">Surgeon</option>
+                <option value="Neurologist">Neurologist</option>
+                <option value="Dermatologist">Dermatologist</option>
               </select>
             </div>
 

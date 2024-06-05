@@ -89,7 +89,7 @@ const Dashboard = () => {
                         <img
                           src={data?.photo || doctorimg}
                           alt=""
-                          className="w-full rounded"
+                          className="w-full rounded h-[200px] object-cover"
                         />
                       </figure>
 
