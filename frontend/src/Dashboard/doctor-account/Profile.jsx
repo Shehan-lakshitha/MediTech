@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import uploadImageToCloudinary from "../../utils/uploadCloudinary.js";
 import { BASE_URL, token } from "../../config.js";
@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 const Profile = ({ doctorData }) => {
   const [formData, setFormData] = useState({
     name: "",
-    email: "ShehanLaksh@gmail.com",
+    email: "",
     password: "",
     phone: "",
     bio: "",
@@ -20,6 +20,23 @@ const Profile = ({ doctorData }) => {
     about: "",
     photo: null,
   });
+
+  useEffect(() => {
+    setFormData({
+      name: doctorData?.name,
+      email: doctorData?.email,
+      phone: doctorData?.phone,
+      bio: doctorData?.bio,
+      gender: doctorData?.gender,
+      specialization: doctorData?.specialization,
+      ticketPrice: doctorData?.ticketPrice,
+      qualifications: doctorData?.qualifications,
+      experiences: doctorData?.experiences,
+      timeSlots: doctorData?.timeSlots,
+      about: doctorData?.about,
+      photo: doctorData?.photo,
+    });
+  }, [doctorData]);
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -92,8 +109,8 @@ const Profile = ({ doctorData }) => {
     addItem("qualifications", {
       startingDate: "",
       endingDate: "",
-      degree: "M.B.B.S",
-      university: "Sabaragamuwa University of Sri Lanka",
+      degree: "",
+      university: "",
     });
   };
 
@@ -112,8 +129,8 @@ const Profile = ({ doctorData }) => {
     addItem("experiences", {
       startingDate: "",
       endingDate: "",
-      position: "Senior Surgeon",
-      hospital: "New Appollo Hospital",
+      position: "",
+      hospital: "",
     });
   };
 
@@ -362,7 +379,7 @@ const Profile = ({ doctorData }) => {
                     <p className="form_label">Hospital</p>
                     <input
                       type="text"
-                      name="Hospital"
+                      name="hospital"
                       value={item.hospital}
                       className="form_input"
                       onChange={(e) => handleExperiencesChange(e, index)}
@@ -422,7 +439,7 @@ const Profile = ({ doctorData }) => {
                       name="startingTime"
                       value={item.startingTime}
                       className="form_input"
-                      onChange={(e) => handleExperiencesChange(e, index)}
+                      onChange={(e) => handleTimeSlotsChange(e, index)}
                     />
                   </div>
                   <div>
@@ -432,7 +449,7 @@ const Profile = ({ doctorData }) => {
                       name="endingTime"
                       value={item.endingTime}
                       className="form_input"
-                      onChange={(e) => handleExperiencesChange(e, index)}
+                      onChange={(e) => handleTimeSlotsChange(e, index)}
                     />
                   </div>
                   <div className="flex items-center">

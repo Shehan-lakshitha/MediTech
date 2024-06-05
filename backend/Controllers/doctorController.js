@@ -65,6 +65,8 @@ export const getAllDoctor = async (req, res) => {
 export const getDoctorProlfile = async (req, res) => {
   const doctorId = req.doctorId;
 
+  console.log(doctorId);
+
   try {
     const doctor = await Doctor.findById(doctorId);
 
@@ -75,7 +77,7 @@ export const getDoctorProlfile = async (req, res) => {
     }
 
     const { password, ...rest } = doctor._doc;
-    const appointments = await Booking({ doctor: doctorId });
+    const appointments = await Booking.find({ doctor: doctorId });
 
     res.status(200).json({ success: true, message: "Doctor found", data:{...rest, appointments} });
   } catch (error) {
