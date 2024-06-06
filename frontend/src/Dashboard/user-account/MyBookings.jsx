@@ -45,14 +45,7 @@ const MyBookings = () => {
       {error && !loading && <Error errorMsg={error} />}
 
       {!loading && !error && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-          {data.map((doctor, index) => {
-            <DoctorCard doctor={doctor.doctor} key={doctor.doctor._id} />;
-          })}
-        </div>
-      )}
-
-      <ul className="grid sm:grid-cols-2 gap-[30px] pt-4 md:p-5">
+        <ul className="grid sm:grid-cols-2 gap-[30px] pt-4 md:p-5">
         {data.filter((item) => item.user._id === user._id)
         .map((item,index) => (
           <li key={index} className="p-4 rounded-[10px] bg-[#fff9ea]">
@@ -75,6 +68,9 @@ const MyBookings = () => {
         ))}
         
       </ul>
+      )}
+
+      
 
       {!loading && !error && data.filter((item) => item.user._id === user._id).length === 0 && (
         <h2 className="mt-5 text-center text-headingColor leading-7 text-[20px] font-semibold">
