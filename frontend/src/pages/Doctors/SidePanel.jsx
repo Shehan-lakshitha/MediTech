@@ -1,7 +1,35 @@
 import React from "react";
 import convertTime from "../../utils/convertTime";
+import { BASE_URL } from "../../config";
+import { token } from "../../config";
+import { toast } from "react-toastify";
 
 const SidePanel = ({ doctorId, ticketPrice, timeSlots }) => {
+  const bookingHandler = async () => {
+    try {
+      const res = await fetch(
+        `${BASE_URL}/bookings/checkout-session/${doctorId}`,
+        {
+          method: "post",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.message + " Please try again");
+        console.log(data.message);
+      }
+
+      if(data.session.url){
+        window.location.href = data.session.url;
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
   return (
     <div className="shadow-panelShadow p-3 lg:p-5 rounded-md">
       <div className="flex items-center justify-between">
@@ -23,14 +51,15 @@ const SidePanel = ({ doctorId, ticketPrice, timeSlots }) => {
                 {item.day.charAt(0).toUpperCase() + item.day.slice(1)}
               </p>
               <p className="text-[15px] leading-6 text-textColor font-semibold">
-                {convertTime(item.startingTime)} - {convertTime(item.endingTime)}
+                {convertTime(item.startingTime)} -{" "}
+                {convertTime(item.endingTime)}
               </p>
             </li>
           ))}
         </ul>
       </div>
 
-      <button className="btn px-2 w-full rounded-[10px]">
+      <button onClick={bookingHandler} className="btn px-2 w-full rounded-[10px]">
         Book an Appointment
       </button>
     </div>

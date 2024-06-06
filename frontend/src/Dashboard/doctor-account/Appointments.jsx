@@ -1,7 +1,34 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { formateDate } from "../../utils/formateDate";
+import { BASE_URL } from "../../config";
+import { toast } from "react-toastify";
+import { authContext } from "../../context/AuthContext";
 
 const Appointments = ({ appointments }) => {
+  const [data, setData] = useState([]);
+
+  const { user } = useContext(authContext);
+
+  useEffect(() => {
+    const useFetchData = async () => {
+      try {
+        const res = await fetch(`${BASE_URL}/bookings/`);
+
+        const result = await res.json();
+        //console.log(result);
+        setData(result.data);
+
+        if (!res.ok) {
+          throw new Error(result.message);
+        }
+      } catch (error) {
+        toast.error(error.message);
+      }
+    };
+    useFetchData();
+  }, []);
+
+  console.log(data);
   return (
     <table className="w-full text-left text-sm text-gray-50">
       <thead className="text-xs text-gray-700 uppercase bg-gray-50">
@@ -25,7 +52,8 @@ const Appointments = ({ appointments }) => {
       </thead>
 
       <tbody>
-        {appointments?.map((item) => (
+        {data.filter((item) => item.doctor._id === user._id)
+        .map((item) => (
           <tr key={item._id}>
             <th
               scope="row"
@@ -44,26 +72,27 @@ const Appointments = ({ appointments }) => {
               </div>
             </th>
 
-            <td className="px-6 py-4">{item.user.gender}</td>
+            <td className="px-6 py-4 text-black">{item.user.gender.charAt(0).toUpperCase() + item.user.gender.slice(1)}</td>
             <td className="px-6 py-4">
-              {item.ispaid && (
-                <div className="flex items-center">
-                  <div className="h-2.5 w-2.5 rounded-full bg-green-500">
+              {item.isPaid && (
+                <div className="flex items-center ">
+                  <div className=" bg-green-500 rounded p-1">
                     Paid
                   </div>
                 </div>
               )}
 
-              {!item.ispaid && (
+              {!item.isPaid && (
                 <div className="flex items-center">
-                  <div className="h-2.5 w-2.5 rounded-full bg-red-500">
+                  <div className="rounded p-1 bg-red-500">
                     Unpaid
                   </div>
                 </div>
               )}
             </td>
-            <td className="px-6 py-4">{item.ticketPrice}</td>
-            <td className="px-6 py-4">{formateDate(item.createdAt)}</td>
+            <td className="px-6 py-4 text-black">{item.ticketPrice}</td>
+            {console.log(item.createdAt.split("T")[0])}
+            <td className="px-6 py-4 text-black">{item.createdAt.split("T")[0]}</td>
           </tr>
         ))}
       </tbody>

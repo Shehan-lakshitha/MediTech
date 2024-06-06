@@ -29,8 +29,8 @@ export const getCheckoutSession = async (req, res) => {
               description: doctor.bio,
               images: [doctor.photo],
             },
-            quantity: 1,
           },
+          quantity: 1,
         },
       ],
     });
@@ -45,8 +45,26 @@ export const getCheckoutSession = async (req, res) => {
 
     await booking.save();
 
-    res.send(200).json({ success: true, message: "Payment Success", session });
+    res
+      .status(200)
+      .json({ success: true, message: "Payment Success", session });
   } catch (error) {
     res.status(500).json({ success: false, message: "Payment Failed" });
+  }
+};
+
+export const getAllBookings = async (req, res) => {
+  try {
+    const bookings = await Booking.find();
+    res.status(200).json({
+      success: true,
+      message: "Successfully fetched all bookings",
+      data: bookings,
+    });
+  } catch (err) {
+    res.status(404).json({
+      success: false,
+      message: "Unsuccess to fetch bookings",
+    });
   }
 };

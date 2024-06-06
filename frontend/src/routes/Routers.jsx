@@ -8,6 +8,7 @@ import Doctors from "../pages/Doctors/Doctors";
 import DoctorDetails from "../pages/Doctors/DoctorDetails";
 import MyAccount from "../Dashboard/user-account/MyAccount";
 import Dashboard from "../Dashboard/doctor-account/Dashboard";
+import CheckoutSuccess from "../pages/CheckoutSuccess";
 
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
@@ -23,6 +24,7 @@ const Routers = () => {
       <Route path="/register" element={<Signup />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/services" element={<Services />} />
+      <Route path="/checkout-success" element={<CheckoutSuccess />} />
       <Route
         path="/users/profile/me"
         element={

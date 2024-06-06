@@ -46,7 +46,7 @@ const Dashboard = () => {
     fetchData();
   }, []);
 
-  console.log(data);
+  //console.log(data);
   return (
     <section>
       <div className="max-w-[1170px] px-5 mx-auto">

@@ -8,8 +8,6 @@ import Error from "../../components/Error/Error.jsx";
 
 const DoctorList = () => {
   const { data, loading, error } = useFetchData(`${BASE_URL}/doctors`);
-
-  console.log(data);
   return (
     <>
       {loading && <Loader />}
