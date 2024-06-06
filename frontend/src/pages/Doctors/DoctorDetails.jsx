@@ -101,13 +101,21 @@ const DoctorDetails = () => {
                   />
                 )}
                 {tab == "feedback" && (
-                  <Feedback reviews={reviews} id={id} totalRating={totalRating} />
+                  <Feedback
+                    reviews={reviews}
+                    id={id}
+                    totalRating={totalRating}
+                  />
                 )}
               </div>
             </div>
 
             <div>
-              <SidePanel />
+              <SidePanel
+                doctorId={data._id}
+                ticketPrice={ticketPrice}
+                timeSlots={timeSlots}
+              />
             </div>
           </div>
         )}

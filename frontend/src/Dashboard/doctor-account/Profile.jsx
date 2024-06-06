@@ -149,9 +149,9 @@ const Profile = ({ doctorData }) => {
     e.preventDefault();
 
     addItem("timeSlots", {
-      day: "Tuesday",
-      startingTime: "03:00",
-      endingTime: "06:00",
+      day: "",
+      startingTime: "",
+      endingTime: "",
     });
   };
 
@@ -422,7 +422,7 @@ const Profile = ({ doctorData }) => {
                       name="day"
                       value={item.day}
                       className="form_input py-3.5"
-                      onChange={(e) => handleExperiencesChange(e, index)}
+                      onChange={(e) => handleTimeSlotsChange(e, index)}
                     >
                       <option value="">Select</option>
                       <option value="sunday">Sunday</option>
