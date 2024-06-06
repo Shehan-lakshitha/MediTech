@@ -100,7 +100,9 @@ const DoctorDetails = () => {
                     experiences={experiences}
                   />
                 )}
-                {tab == "feedback" && <Feedback reviews={reviews} totalRating={totalRating} />}
+                {tab == "feedback" && (
+                  <Feedback reviews={reviews} id={id} totalRating={totalRating} />
+                )}
               </div>
             </div>
 

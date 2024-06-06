@@ -1,11 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import avatar from "../../assets/images/avatar-icon.png";
 import { formateDate } from "../../utils/formateDate";
 import { AiFillStar } from "react-icons/ai";
 import FeedbackForm from "./FeedbackForm";
+import { toast } from "react-toastify";
+import { BASE_URL } from "../../config";
 
-const Feedback = ({ reviews, totalRating }) => {
+
+const Feedback = ({ id, totalRating }) => {
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [reviews, setReviews] = useState([]);
+
+
+  useEffect(() => {
+    const fetData = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch(`${BASE_URL}/doctors/${id}/reviews`);
+
+        const result = await res.json();
+        setReviews(result.data);
+
+        if (!res.ok) {
+          throw new Error(result.message);
+        }
+
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+        toast.error(error.message);
+      }
+    };
+
+    fetData();
+  }, []);
 
   return (
     <div>
@@ -14,11 +43,12 @@ const Feedback = ({ reviews, totalRating }) => {
           All reviews ({totalRating})
         </h4>
 
-        {reviews?.map((review, index) => {
+        {reviews?.filter((review) => review?.doctor === id)
+        .map((review, index) => (
           <div key={index} className="flex justify-between gap-10 mb-[30px]">
             <div className="flex gap-3">
               <figure className="w-10 h-10 rounded-full">
-                <img className="w-full" src={review?.user?.phone} alt="" />
+                <img className="w-full rounded-full object-cover" src={review?.user?.photo} alt="" />
               </figure>
 
               <div>
@@ -39,8 +69,8 @@ const Feedback = ({ reviews, totalRating }) => {
                 <AiFillStar key={index} color="#0067FF" />
               ))}
             </div>
-          </div>;
-        })}
+          </div>
+        ))}
       </div>
 
       {!showFeedbackForm && (
