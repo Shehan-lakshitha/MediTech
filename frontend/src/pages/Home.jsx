@@ -22,7 +22,7 @@ import Testimonial from "../components/Testimonial/Testimonial";
 const Home = () => {
   return (
     <>
-      {/* hero section*/}
+      {/* hero section */}
       <section className="hero_section pt-[60px] 2xl:h-[800px]">
         <div className="container">
           <div className="flex flex-col lg:flex-row gap-[90px] items-center justify-between">
@@ -33,10 +33,7 @@ const Home = () => {
                   We help patients live a healthy, longer life.
                 </h1>
                 <p className="text_para">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Corrupti temporibus laboriosam perspiciatis exercitationem
-                  repellat fugit, ad impedit omnis minus deserunt deleniti
-                  dignissimos iusto.
+                  At our clinic, we provide comprehensive healthcare services to ensure you stay healthy and happy. Our experienced doctors are dedicated to offering personalized care to meet your needs.
                 </p>
                 <button className="btn">Request an Appointment</button>
               </div>
@@ -49,7 +46,7 @@ const Home = () => {
                     30+
                   </h2>
                   <span className="w-[100px] h-2 bg-yellowColor rounded-full block mt-[-6px]"></span>
-                  <p className="text_para">Year of Experience</p>
+                  <p className="text_para">Years of Experience</p>
                 </div>
 
                 <div>
@@ -57,7 +54,7 @@ const Home = () => {
                     15+
                   </h2>
                   <span className="w-[80px] h-2 bg-purpleColor rounded-full block mt-[-6px]"></span>
-                  <p className="text_para">Clinic Location</p>
+                  <p className="text_para">Clinic Locations</p>
                 </div>
                 <div>
                   <h2 className="text-[36px] leading-[56px] lg:text-[44px] lg:leading-[54px] font-[700] text-headingColor">
@@ -72,15 +69,15 @@ const Home = () => {
             {/* hero images */}
             <div className="flex gap-[30px] justify-end">
               <div>
-                <img className="w-full rounded-[30px]" src={heroImg01} alt="" />
+                <img className="w-full rounded-[30px]" src={heroImg01} alt="Hero 1" />
               </div>
               <div className="mt-[30px]">
                 <img
                   src={heroImg02}
                   className="w-full mb-[30px] rounded-[30px]"
-                  alt=""
+                  alt="Hero 2"
                 />
-                <img src={heroImg03} className="w-full rounded-[30px]" alt="" />
+                <img src={heroImg03} className="w-full rounded-[30px]" alt="Hero 3" />
               </div>
             </div>
           </div>
@@ -95,15 +92,14 @@ const Home = () => {
               Providing the best medical services
             </h2>
             <p className="text_para text-center">
-              World-class care for everyone. Our health System offers ynmatches,
-              expert health care.
+              Our healthcare system offers unmatched, expert care. From routine check-ups to specialized treatments, we are here to support your health journey.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-[30px] mt-[30px] lg:mt-[55px]">
             <div className="py-[30px] px-5">
               <div className="flex items-center justify-center">
-                <img src={icon01} alt="" />
+                <img src={icon01} alt="Find a Doctor" />
               </div>
 
               <div className="mt-[30px]">
@@ -111,8 +107,7 @@ const Home = () => {
                   Find a Doctor
                 </h2>
                 <p className="text-[16px] leading-7 text-textColor font-[400] mt-4 text-center">
-                  World-class care for everyone. Our health System offers
-                  ynmatches, expert health care.From the lab to the clinic
+                  Browse our directory to find a specialist who meets your needs. Our team of highly qualified doctors is here to provide exceptional care.
                 </p>
 
                 <Link
@@ -126,7 +121,7 @@ const Home = () => {
 
             <div className="py-[30px] px-5">
               <div className="flex items-center justify-center">
-                <img src={icon02} alt="" />
+                <img src={icon02} alt="Find a Location" />
               </div>
 
               <div className="mt-[30px]">
@@ -134,12 +129,11 @@ const Home = () => {
                   Find a Location
                 </h2>
                 <p className="text-[16px] leading-7 text-textColor font-[400] mt-4 text-center">
-                  World-class care for everyone. Our health System offers
-                  ynmatches, expert health care.From the lab to the clinic
+                  Our clinics are conveniently located to serve you better. Find the nearest location and visit us for top-notch medical services.
                 </p>
 
                 <Link
-                  to="/doctors"
+                  to="/locations"
                   className="w-[44px] h-[44px] rounded-full border border-solid border-[#181A1E] mt-[30px] mx-auto flex items-center justify-center group hover:bg-primaryColor"
                 >
                   <BsArrowRight className="group-hover:text-white w-6 h-5" />
@@ -149,7 +143,7 @@ const Home = () => {
 
             <div className="py-[30px] px-5">
               <div className="flex items-center justify-center">
-                <img src={icon03} alt="" />
+                <img src={icon03} alt="Book Appointment" />
               </div>
 
               <div className="mt-[30px]">
@@ -157,12 +151,11 @@ const Home = () => {
                   Book Appointment
                 </h2>
                 <p className="text-[16px] leading-7 text-textColor font-[400] mt-4 text-center">
-                  World-class care for everyone. Our health System offers
-                  ynmatches, expert health care.From the lab to the clinic
+                  Schedule an appointment with our specialists at your convenience. We offer flexible booking options to fit your busy schedule.
                 </p>
 
                 <Link
-                  to="/doctors"
+                  to="/appointments"
                   className="w-[44px] h-[44px] rounded-full border border-solid border-[#181A1E] mt-[30px] mx-auto flex items-center justify-center group hover:bg-primaryColor"
                 >
                   <BsArrowRight className="group-hover:text-white w-6 h-5" />
@@ -182,10 +175,9 @@ const Home = () => {
       <section>
         <div className="container">
           <div className="xl:w-[470px] mx-auto">
-            <h2 className="heading text-center">Our medical services</h2>
+            <h2 className="heading text-center">Our Medical Services</h2>
             <p className="text_para text-center">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto,
-              adipisicing elitnobis.
+              We offer a wide range of medical services to meet your healthcare needs. From preventive care to advanced treatments, our team is here to help.
             </p>
           </div>
 
@@ -203,23 +195,22 @@ const Home = () => {
                 Get virtual treatment <br /> anytime
               </h2>
               <ul className="pl-4">
-                <li className="text_para">1. Schedule the appointment</li>
+                <li className="text_para">1. Schedule an appointment</li>
                 <li className="text_para">
-                  2. Search for your physician here, and contact their office
+                  2. Search for your physician and contact their office
                 </li>
                 <li className="text_para">
-                  3. View our physicians who are accepting new patients, use the
-                  online scheduling tool to select an appointment time
+                  3. Use our online scheduling tool to select an appointment time
                 </li>
               </ul>
-              <Link to="/">
+              <Link to="/virtual-care">
                 <button className="btn">Learn More</button>
               </Link>
             </div>
 
             {/* feature img */}
             <div className="relative z-10 xl:w-[770px] flex justify-end mt-[50px] lg:mt-0">
-              <img src={featureImg} className="w-3/4 rounded-[30px]" alt="" />
+              <img src={featureImg} className="w-3/4 rounded-[30px]" alt="Feature" />
 
               <div className="w-[150px] lg:w-[248px] bg-white absolute bottom-[50px] left-0 md:bottom-[100px] md:left-5 z-20 p-2 pb-3 lg:pt-4 lg:px-4 lg:pb-[26px] rounded-[10px]">
                 <div className="flex items-center justify-between">
@@ -232,7 +223,7 @@ const Home = () => {
                     </p>
                   </div>
                   <span className="w-5 h-5 lg:w-[34px] flex items-center justify-center bg-yellowColor rounded py-1 px-[6px] lg:px-[9px]">
-                    <img src={videoIcon} alt="" />
+                    <img src={videoIcon} alt="Video Icon" />
                   </span>
                 </div>
 
@@ -241,9 +232,9 @@ const Home = () => {
                 </div>
 
                 <div className="flex items-center gap-[6px] lg:gap-[10px] mt-2 lg:mt-[18px]">
-                  <img src={avatarIcon} alt="" />
+                  <img src={avatarIcon} alt="Doctor Avatar" />
                   <h4 className="text-[10px] leading-3 lg:text-[16px] lg:leading-[22px] font-[700] text-headingColor">
-                    Kamal Perera
+                    Dr. Kamal Perera
                   </h4>
                 </div>
               </div>
@@ -258,8 +249,7 @@ const Home = () => {
           <div className="xl:w-[470px] mx-auto">
             <h2 className="heading text-center">Our Doctors</h2>
             <p className="text_para text-center">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto,
-              adipisicing elitnobis.
+              Meet our team of highly qualified doctors who are dedicated to providing exceptional healthcare services.
             </p>
           </div>
 
@@ -272,12 +262,12 @@ const Home = () => {
         <div className="container">
           <div className="flex justify-between gap-[50px] lg:gap-0">
             <div className="w-1/2 hidden md:block">
-              <img src={faqImg} alt="" />
+              <img src={faqImg} alt="FAQ" />
             </div>
 
             <div className="w-full md:w-1/2">
               <h2 className="heading">
-                Most questions by our beloved patients
+                Frequently Asked Questions
               </h2>
 
               <FaqList />
@@ -290,11 +280,10 @@ const Home = () => {
 
       <section>
         <div className="container">
-        <div className="xl:w-[470px] mx-auto">
-            <h2 className="heading text-center">What our patients say</h2>
+          <div className="xl:w-[470px] mx-auto">
+            <h2 className="heading text-center">What Our Patients Say</h2>
             <p className="text_para text-center">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto,
-              adipisicing elitnobis.
+              Hear from our patients about their experiences with our healthcare services.
             </p>
           </div>
           <Testimonial />
