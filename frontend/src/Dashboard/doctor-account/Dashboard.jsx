@@ -113,8 +113,7 @@ const Dashboard = () => {
                         </div>
 
                         <p className="text_para font-[15px] lg:max-[190px] leading-6">
-                          {data?.bio ||
-                            "lorem ipsum dolor sit amet, consectetur adipiscing elit."}
+                          {data?.bio}
                         </p>
                       </div>
                     </div>
@@ -126,7 +125,9 @@ const Dashboard = () => {
                     />
                   </div>
                 )}
-                {tab === "appointments" && <Appointments appointments={data.appointments} />}
+                {tab === "appointments" && (
+                  <Appointments appointments={data.appointments} />
+                )}
                 {tab === "settings" && <Profile doctorData={data} />}
               </div>
             </div>

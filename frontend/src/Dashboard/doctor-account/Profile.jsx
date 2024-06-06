@@ -68,6 +68,8 @@ const Profile = ({ doctorData }) => {
         throw Error(result.message);
       }
 
+      localStorage.setItem("user", JSON.stringify(result.data));
+
       toast.success(result.message);
     } catch (err) {
       toast.error(err.message);
@@ -492,7 +494,7 @@ const Profile = ({ doctorData }) => {
               <img
                 src={formData.photo}
                 alt=""
-                className="w-full rounded-full"
+                className="w-full h-full rounded-full object-cover"
               />
             </figure>
           )}
