@@ -1,3 +1,7 @@
+<p align="center"><img src="https://github.com/Shehan-lakshitha/MediTech/assets/90453471/47ec9bc7-c552-4f7b-908b-159d43433eb2" width="500" /><p>
+
+
+
 # MediTech - MERN Stack Doctor Appointment System ![Static Badge](https://img.shields.io/badge/MediTech-blue)
 
 
@@ -38,6 +42,12 @@ Welcome to the MERN Stack Doctor Appointment System! This web application is des
    ```
 
 3. Configure the environment variables by creating a `.env` file in the root directory with the necessary settings.
+   Add the following environment variables
+   `PORT`
+   ,`MONGO_URL`
+   ,`JWT_SECRET_KEY`
+   ,`STRIPE_SECRET_KEY`
+   ,`CLIENT_URL`
 
 4. Run the application:
    ```
@@ -45,7 +55,19 @@ Welcome to the MERN Stack Doctor Appointment System! This web application is des
    npm start
    ```
 
-Visit `http://localhost:3000` to access the web application.
+5. Visit `http://localhost:3000` to access the web application.
+</br>
+</br>
+👉🏻<a href="https://meditechlk.netlify.app">Click here</a> to see the demo
+<br/>
+**Please note that the web app site is hosted on free tier accounts some lags could happen**
 
+## Developers
+<a href="https://github.com/Shehan-lakshitha">Shehan Lakshitha </a> - 19APC3989 <br>
+<a href="https://github.com/nipunwimalasooriya">Nipun Wimalasooriya </a> - 19APC4043<br>
+<a href="https://github.com/Hirushi-Amarasinghe">Hirushi Ammarasinghe </a> - 
+
+## Feedbacks & Contributions
+All feedbacks and contributions are warmly welcome
 
 
