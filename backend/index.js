@@ -9,49 +9,53 @@ import doctorRoute from "./Routes/doctor.js";
 import reviewRoute from "./Routes/review.js";
 import bookingRoute from "./Routes/booking.js";
 
+
+
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 8000;
 
-const corsOptions = {
-    origin: ["https://medi-tech-ochre.vercel.app"], // The client URL vercel
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true, 
-};
+app.use(cors(
+    {
+        origin: ["https://medi-tech-ochre.vercel.app/"],
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        credentials: true,
+    }
+))
 
+// const corsOptions = {
+//     origin:true,
+// }
 
-app.use(cors(corsOptions));
-
-// Middleware
-app.use(express.json());
-app.use(cookieParser());
-
-app.get('/', (req, res) => {
+app.get('/', (req,res)=> {
     res.send('API is working');
-});
+})
 
-mongoose.set('strictQuery', false);
-const connectDB = async () => {
+mongoose.set('strictQuery', false)
+const connectDB = async()=>{
     try {
         await mongoose.connect(process.env.MONGO_URL, {
-            // useNewUrlParser: true,
-            // useUnifiedTopology: true,
-        });
-        console.log('MongoDB database is connected');
+            // userNewUrlParser: true,
+            // userUnifiedTopology: true,
+        })
+        console.log('MongoDB database is connected')
     } catch (err) {
-        console.log('MongoDB database connection failed ' + err);
+        console.log('MongoDB database connection failed ' + err)
     }
-};
+}
 
-// Routes
+//middleware
+app.use(express.json());
+app.use(cookieParser());
+//app.use(cors(corsOptions));
 app.use('/api/v1/auth', authRoute);
 app.use('/api/v1/users', userRoute);
 app.use('/api/v1/doctors', doctorRoute);
 app.use('/api/v1/reviews', reviewRoute);
 app.use('/api/v1/bookings', bookingRoute);
 
-app.listen(port, () => {
+app.listen(port, ()=> {
     connectDB();
-    console.log("Server is running @ http://localhost:" + port);
-});
+    console.log("server is running @ http://localhost:" + port);
+})
