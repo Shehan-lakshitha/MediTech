@@ -18,7 +18,7 @@ const port = process.env.PORT || 8000;
 
 app.use(cors(
     {
-        origin: '*',
+        origin: 'https://medi-tech-ochre.vercel.app/',
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true,
         optionsSuccessStatus: 200
