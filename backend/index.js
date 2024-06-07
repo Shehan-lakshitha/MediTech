@@ -16,6 +16,14 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 8000;
 
+app.use(cors(
+    {
+        origin: ["https://medi-tech-ochre.vercel.app/"],
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        credentials: true,
+    }
+))
+
 const corsOptions = {
     origin:true,
 }
