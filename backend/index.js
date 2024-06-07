@@ -11,7 +11,6 @@ import bookingRoute from "./Routes/booking.js";
 
 
 
-
 dotenv.config();
 
 const app = express();
