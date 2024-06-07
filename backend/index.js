@@ -8,7 +8,7 @@ import userRoute from './Routes/user.js';
 import doctorRoute from "./Routes/doctor.js";
 import reviewRoute from "./Routes/review.js";
 import bookingRoute from "./Routes/booking.js";
-const path = require('path');
+
 
 
 
@@ -50,11 +50,6 @@ app.use('/api/v1/reviews', reviewRoute);
 app.use('/api/v1/bookings', bookingRoute);
 
 
-//for deployment
-app.use(express.static("./../frontend/build"));
-app.get("*", (req,res) => {
-    res.sendFile(path.resolve(__dirname, "./../frontend/build/index.html"));
-})
 
 app.listen(port, ()=> {
     connectDB();
