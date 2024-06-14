@@ -64,8 +64,11 @@ Welcome to the MERN Stack Doctor Appointment System! This web application is des
 
 ## Developers
 <a href="https://github.com/Shehan-lakshitha">Shehan Lakshitha </a> - 19APC3989 <br>
+   &emsp;Frontend, Backend with integration of stripe payment gateway <br/>
 <a href="https://github.com/nipunwimalasooriya">Nipun Wimalasooriya </a> - 19APC4043<br>
-<a href="https://github.com/Hirushi-Amarasinghe">Hirushi Ammarasinghe </a> - 
+   &emsp;Backend development with JWT authorization <br/>
+<a href="https://github.com/Hirushi-Amarasinghe">Hirushi Ammarasinghe </a> - 19APC4051<br>
+   &emsp;Frontend development contactUs page and the services page
 
 ## Feedbacks & Contributions
 All feedbacks and contributions are warmly welcome
